@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>出现次数最多的字母</title>
+</head>
+<body>
+    <script>
+        const str = 'ewerwesdfetertryrtyrtytuyuyuyyyyyyysdfsdsfsdfsdfwwqqwdfsdfsdfeasdawqasdq';
+
+        function findMaxTimes(str) {
+            if (str.length === 1) return str[0]
+            const obj = {}
+            // new Set 生成的是一个对象，所以需要 Array.from 生成数组
+            // const arr = Array.from(new Set(Array.from(str)))
+            // const arr = Array.from(str)
+            // arr.map(e => {
+            //     if (obj[e]) obj[e]++
+            //     else obj[e] = 1
+            // })
+
+            for (let i = 0; i < str.length; i++) {
+                obj[str.charAt(i)] ? obj[str.charAt(i)]++ : obj[str.charAt(i)] = 1
+            }
+            
+            let MaxNumber = 1
+            let _arr = []
+            for (x in obj) {
+                if (!(obj[x] < MaxNumber)) {
+                    if (obj[x] > MaxNumber) {
+                        _arr = [x]
+                    } else {
+                        _arr.push(x)
+                    }
+                    MaxNumber = obj[x]
+                }
+            }
+            console.log(_arr)
+        }
+        
+        console.time('func')
+        findMaxTimes(str);
+        console.timeEnd('func')
+    </script>
+</body>
+</html>
