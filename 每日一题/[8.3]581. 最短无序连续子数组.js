@@ -61,10 +61,29 @@
 //   return 0
 // }
 //  最优解：
+
+// () => {
+//   const n = nums.length;
+//     let max = -Number.MAX_VALUE, r = -1;
+//     let min = Number.MAX_VALUE, l = -1;
+//     for (let i = 0; i < n; i++) {
+//         if (max > nums[i]) {
+//             r = i;
+//         } else {
+//             max = nums[i];
+//         }
+//         if (min < nums[n - i - 1]) {
+//             l = n - i - 1;
+//         } else {
+//             min = nums[n - i - 1];
+//         }
+//     }
+//     return r === -1 ? 0 : r - l + 1;
+// }
 var findUnsortedSubarray = function (nums) {
   let len = nums.length
   let min = Number.MAX_VALUE
-  let max = Number.MIN_VALUE
+  let max = -min
   let l = -1
   let r = -1
   for (let i = 0; i < len; i++) {
